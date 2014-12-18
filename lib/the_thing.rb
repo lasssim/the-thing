@@ -1,7 +1,13 @@
 class TheThing
 
+  @awesome = true
+
   def self.awesome?
-    true
+    @awesome
+  end
+
+  def self.rot!
+    @awesome = false
   end
 
 end
