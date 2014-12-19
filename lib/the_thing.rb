@@ -1,13 +1,14 @@
 class TheThing
 
-  @awesome = true
+  def initialize
+    @awesome = true
+  end
 
-  def self.awesome?
+  def awesome?
     @awesome
   end
 
-  def self.rot!
+  def rot!
     @awesome = false
   end
-
 end
