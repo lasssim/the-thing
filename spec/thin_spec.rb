@@ -17,10 +17,10 @@ describe TheThing do
     expect(subject).not_to be_awesome
   end
 
-  context "two theThings exist" do
+  context "two things exist" do
     let(:other_thing) { TheThing.new }
 
-    context "the can send messages to each other" do
+    context "they can send messages to each other" do
       context "no messages sent" do
         it { expect(one_thing.sent_messages).to eq [] }
         it { expect(other_thing.received_messages).to eq [] }
@@ -33,6 +33,9 @@ describe TheThing do
 
         it { expect(one_thing.sent_messages.last).to eq message }
         it { expect(other_thing.received_messages.last).to eq message }
+
+        it { expect(other_thing.received_messages.last).to be_a_valid_message }
+        it { expect(one_thing.sent_messages.last).to be_acknowledged }
       end
     end
   end
