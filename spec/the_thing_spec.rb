@@ -39,4 +39,17 @@ describe TheThing do
       end
     end
   end
+  
+  describe "#receive" do
+    let(:receiver) { TheThing.new }
+    
+    context "receiving messages does not always work" do
+      before { allow(receiver).to receive(:receive).and_return(false, true) }
+    
+      it "still can deliver the message successfully" do
+        one_thing.send_message("Hello", receiver)
+        expect(one_thing.sent_messages.count).to eq 1
+      end
+    end
+  end
 end
